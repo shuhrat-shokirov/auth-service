@@ -2,6 +2,7 @@ package main
 
 import (
 	"auth-service/cmd/auth/app"
+	"auth-service/pkg/core/add"
 	"auth-service/pkg/core/token"
 	"auth-service/pkg/core/user"
 	"auth-service/pkg/di"
@@ -52,6 +53,7 @@ func start(addr string, dsn string, secret jwt.Secret) {
 		},
 		token.NewService,
 		user.NewService,
+		add.NewService,
 	)
 
 	container.Start()

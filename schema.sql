@@ -7,3 +7,5 @@ password text not null
 INSERT INTO users (login, password)
 VALUES ('admin', 'pass'),
        ('qwe', 'pass');
+
+INSERT INTO users (login, password) VALUES (?, ?);

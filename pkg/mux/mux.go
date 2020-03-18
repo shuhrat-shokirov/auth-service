@@ -47,19 +47,6 @@ func NewExactMux() *ExactMux {
 }
 
 func (m *ExactMux) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
-	// TODO:
-	//ctx, cancel := context.WithTimeout(request.Context(), time.Second * 5)
-	//// pass created context to next functions
-	//request = request.WithContext(ctx) // copy original with new context
-	//// pass to others - copied request
-	//defer func() {
-	//	log.Print(ctx.Err())
-	//	cancel()
-	//	if ctx.Err() == context.DeadlineExceeded {
-	//		writer.WriteHeader(http.StatusGatewayTimeout)
-	//	}
-	//}()
-
 	if handler, err := m.handler(request.Method, request.URL.Path); err == nil {
 		handler.ServeHTTP(writer, request)
 	}

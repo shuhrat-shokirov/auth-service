@@ -15,6 +15,11 @@ func (s *Server) InitRoutes() {
 		//tokens.HandleCreateToken(s),
 		logger.Logger("TOKEN"),
 	)
+	s.router.POST(
+		"/api/newUser",
+		s.handleAddUser(),
+		logger.Logger("Registration"),
+	)
 	// /api/users/me
 	// golang нельзя reflect.TypeOf(token.Payload)
 	// golang нельзя reflect.TypeOf((*token.Payload)(nil))

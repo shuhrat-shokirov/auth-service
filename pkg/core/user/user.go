@@ -24,6 +24,7 @@ func (s *Service) Profile(ctx context.Context) (response ResponseDTO, err error)
 	if !ok {
 		return ResponseDTO{}, errors.New("...")
 	}
+
 	return ResponseDTO{
 		Id: auth.Id,
 		Name: "Vasya",
