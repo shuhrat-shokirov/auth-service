@@ -106,6 +106,7 @@ func (s *Server) handleAddUser() http.HandlerFunc {
 		}
 		err = s.addUser.AddNewUser(request.Context(), body)
 		if err != nil {
+			writer.WriteHeader(http.StatusBadRequest)
 			log.Print(err)
 		}
 	}
