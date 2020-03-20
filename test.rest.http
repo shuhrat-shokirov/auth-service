@@ -2,8 +2,8 @@ POST http://localhost:8888/api/tokens
 Content-Type: application/json
 
 {
-  "username": "vasya",
-  "password": "hash"
+  "username": "admin",
+  "password": "pass"
 }
 
 > {% client.global.set("auth_token", response.body.token); %}
@@ -35,8 +35,12 @@ Content-Type: application/json
 
 {
   "name" : "name",
-  "login": "admin",
+  "login": "daddsf",
   "password": "pass1"
 }
+
+###
+
+GET http://localhost:9999/api/rooms/list
 
 ###

@@ -30,7 +30,11 @@ func (s *Server) InitRoutes() {
 		jwt.JWT(reflect.TypeOf((*token.Payload)(nil)).Elem(), s.secret),
 		logger.Logger("USERS"),
 	)
-
+	s.router.GET(
+		"/api/rooms/list",
+		s.handleGetAllRooms(),
+		logger.Logger("USERS"),
+	)
 	s.router.DELETE(
 		"/api/users/1",
 		s.handleProfile(),

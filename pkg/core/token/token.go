@@ -46,7 +46,6 @@ func (s *Service) Generate(context context.Context, request *RequestDTO) (respon
 		return
 	}
 	hash, err := bcrypt.GenerateFromPassword([]byte(pass), bcrypt.DefaultCost)
-	//hashInDb, err := bcrypt.GenerateFromPassword([]byte(request.Password), bcrypt.DefaultCost)
 	err = bcrypt.CompareHashAndPassword([]byte(hash), []byte(request.Password))
 	if errors.Is(err, bcrypt.ErrMismatchedHashAndPassword) {
 		err = ErrInvalidPassword

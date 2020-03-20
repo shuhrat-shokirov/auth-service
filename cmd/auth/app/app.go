@@ -26,6 +26,10 @@ func NewServer(router *mux.ExactMux, pool *pgxpool.Pool, secret jwt.Secret, toke
 	return &Server{router: router, pool: pool, secret: secret, tokenSvc: tokenSvc, userSvc: userSvc, addUser: addUser}
 }
 
+
+
+
+
 // dig - check nil
 
 
