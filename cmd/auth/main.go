@@ -5,13 +5,12 @@ import (
 	"auth-service/pkg/core/add"
 	"auth-service/pkg/core/token"
 	"auth-service/pkg/core/user"
-	"auth-service/pkg/di"
-	"auth-service/pkg/jwt"
-	"auth-service/pkg/mux"
 	"context"
 	"flag"
 	"fmt"
 	"github.com/jackc/pgx/v4/pgxpool"
+	"github.com/shuhrat-shokirov/jwt/pkg/cmd"
+	"github.com/shuhrat-shokirov/mux/pkg/mux"
 	"net"
 	"net/http"
 )
@@ -36,33 +35,15 @@ func main() {
 }
 
 func start(addr string, dsn string, secret jwt.Secret) {
-	// DI - Martin Fowler
-	container := di.NewContainer()
-
-	container.Provide(
-		app.NewServer,
-		mux.NewExactMux,
-		func() jwt.Secret { return secret },
-		func() DSN { return DSN(dsn) },
-		func(dsn DSN) *pgxpool.Pool {
-			pool, err := pgxpool.Connect(context.Background(), string(dsn))
-			if err != nil {
-				panic(fmt.Errorf("can't create pool: %w", err))
-			}
-			return pool
-		},
-		token.NewService,
-		user.NewService,
-		add.NewService,
-	)
-
-	container.Start()
-	// IoC - inversion of control (программа определяет, куда вы можете встроиться)
-	// StartListener, StopListener
-	// см. Errors.As
-	var appServer *app.Server
-	container.Component(&appServer)
-
-	panic(http.ListenAndServe(addr, appServer))
+	pool, err := pgxpool.Connect(context.Background(), string(dsn))
+	if err != nil {
+		panic(fmt.Errorf("can't create pool: %w", err))
+	}
+	service := token.NewService(secret, pool)
+	exactMux := mux.NewExactMux()
+	newService := add.NewService(pool)
+	userSvc := user.NewService()
+	server := app.NewServer(exactMux, pool, secret, service, userSvc, newService)
+	server.Start()
+	panic(http.ListenAndServe(addr, server))
 }
-

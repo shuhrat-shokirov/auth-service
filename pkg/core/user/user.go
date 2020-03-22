@@ -2,9 +2,9 @@ package user
 
 import (
 	"auth-service/pkg/core/token"
-	"auth-service/pkg/mux/middleware/jwt"
 	"context"
 	"errors"
+	"github.com/shuhrat-shokirov/mux/pkg/mux/middleware/jwt"
 )
 
 type Service struct { }

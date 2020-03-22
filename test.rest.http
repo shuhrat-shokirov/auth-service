@@ -1,4 +1,4 @@
-POST http://localhost:8888/api/tokens
+POST http://localhost:9999/api/tokens
 Content-Type: application/json
 
 {
@@ -35,7 +35,7 @@ Content-Type: application/json
 
 {
   "name" : "name",
-  "login": "daddsf",
+  "login": "daddsfa",
   "password": "pass1"
 }
 

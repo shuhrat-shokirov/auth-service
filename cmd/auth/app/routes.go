@@ -1,10 +1,10 @@
 package app
 
 import (
-	"auth-service/pkg/core/token"
-	"auth-service/pkg/mux/middleware/authenticated"
-	"auth-service/pkg/mux/middleware/jwt"
-	"auth-service/pkg/mux/middleware/logger"
+	"github.com/shuhrat-shokirov/core/pgk/core/token"
+	"github.com/shuhrat-shokirov/mux/pkg/mux/middleware/authenticated"
+	"github.com/shuhrat-shokirov/mux/pkg/mux/middleware/jwt"
+	"github.com/shuhrat-shokirov/mux/pkg/mux/middleware/logger"
 	"reflect"
 )
 
@@ -30,11 +30,11 @@ func (s *Server) InitRoutes() {
 		jwt.JWT(reflect.TypeOf((*token.Payload)(nil)).Elem(), s.secret),
 		logger.Logger("USERS"),
 	)
-	s.router.GET(
-		"/api/rooms/list",
-		s.handleGetAllRooms(),
-		logger.Logger("USERS"),
-	)
+	//s.router.GET(
+	//	"/api/rooms/list",
+	//	s.handleGetAllRooms(),
+	//	logger.Logger("USERS"),
+	//)
 	s.router.DELETE(
 		"/api/users/1",
 		s.handleProfile(),

@@ -1,10 +1,10 @@
 package token
 
 import (
-	"auth-service/pkg/jwt"
 	"context"
 	"errors"
 	"github.com/jackc/pgx/v4/pgxpool"
+	"github.com/shuhrat-shokirov/jwt/pkg/cmd"
 	"golang.org/x/crypto/bcrypt"
 	"time"
 )
