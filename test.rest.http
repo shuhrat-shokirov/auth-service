@@ -2,8 +2,8 @@ POST http://localhost:9999/api/tokens
 Content-Type: application/json
 
 {
-  "username": "admin",
-  "password": "pass"
+  "username": "parviz",
+  "password": "par"
 }
 
 > {% client.global.set("auth_token", response.body.token); %}
@@ -35,8 +35,8 @@ Content-Type: application/json
 
 {
   "name" : "name",
-  "login": "daddsfa",
-  "password": "pass1"
+  "login": "parviz",
+  "password": "par"
 }
 
 ###

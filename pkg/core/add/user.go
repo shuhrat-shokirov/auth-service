@@ -25,7 +25,7 @@ var ErrAddUser = errors.New("login has haven't")
 
 func (s * Service) AddNewUser(context context.Context, request NewUser) ( err error) {
 	log.Print(request)
-	exec, err := s.pool.Exec(context, `INSERT INTO users (login, password) VALUES ($1, $2);`, request.Login, request.Password)
+	exec, err := s.pool.Exec(context, `INSERT INTO users (name, login, password) VALUES ($1,$2, $3);`, request.Name, request.Login, request.Password)
 	if err != nil {
 		log.Print(err)
 		err = ErrAddUser

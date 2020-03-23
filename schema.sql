@@ -1,6 +1,7 @@
 Create table if not exists users
 (
     id       Bigserial primary key,
+    name     Text NOT NULL,
     login    Text UNIQUE not null,
     password text        not null
 );

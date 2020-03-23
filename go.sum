@@ -88,6 +88,7 @@ github.com/shuhrat-shokirov/jwt v0.0.0-20200314214637-7d38b0010d86 h1:0PPRIjXGi+
 github.com/shuhrat-shokirov/jwt v0.0.0-20200314214637-7d38b0010d86/go.mod h1:2HrX+oB9hHjS4Td6+RMajfMZUAt5HTKsW2gvVIaAG+c=
 github.com/shuhrat-shokirov/jwt v0.0.0-20200317123653-74564f0af5dd h1:2pD9bewOCzGERsOg/adD3snrAJa1uVV7Ih2CpFILEek=
 github.com/shuhrat-shokirov/jwt v0.0.0-20200317123653-74564f0af5dd/go.mod h1:2HrX+oB9hHjS4Td6+RMajfMZUAt5HTKsW2gvVIaAG+c=
+github.com/shuhrat-shokirov/mux v0.0.0-20200314221019-249136212c96 h1:ushLkNPccee7dcSdjMKaQmm7Se51l3HcBZU9EBt3ulU=
 github.com/shuhrat-shokirov/mux v0.0.0-20200314221019-249136212c96/go.mod h1:r7vQhMtWpDwaZwKmkERXmjqnmxiLj4TxYSZFdcuTvwU=
 github.com/shuhrat-shokirov/mux v0.0.0-20200320081849-a50e2bd971ee h1:+JEsXHztMOwdieFUCv9V8W8nf9fiRRyqzAItPkd3Gyw=
 github.com/shuhrat-shokirov/mux v0.0.0-20200320081849-a50e2bd971ee/go.mod h1:r7vQhMtWpDwaZwKmkERXmjqnmxiLj4TxYSZFdcuTvwU=

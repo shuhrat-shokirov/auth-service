@@ -39,8 +39,9 @@ var ErrInvalidPassword = errors.New("invalid password")
 
 func (s *Service) Generate(context context.Context, request *RequestDTO) (response ResponseDTO, err error) {
 	var pass string
-	err = s.pool.QueryRow(context, `SELECT password FROM users WHERE login = $1;
-`, request.Username).Scan(&pass)
+	var id int64
+	err = s.pool.QueryRow(context, `SELECT id, password FROM users WHERE login = $1;
+`, request.Username).Scan(&id, &pass)
 	if err != nil {
 		err = ErrInvalidLogin
 		return
@@ -53,7 +54,7 @@ func (s *Service) Generate(context context.Context, request *RequestDTO) (respon
 	}
 
 	response.Token, err = jwt.Encode(Payload{
-		Id:    1,
+		Id:    id,
 		Exp:   time.Now().Add(time.Hour).Unix(),
 		Roles: []string{"ROLE_USER"},
 	}, s.secret)

@@ -16,7 +16,7 @@ func (s *Server) InitRoutes() {
 		logger.Logger("TOKEN"),
 	)
 	s.router.POST(
-		"/api/newUser",
+		"/api/user/0",
 		s.handleAddUser(),
 		logger.Logger("Registration"),
 	)
